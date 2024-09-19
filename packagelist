@@ -1,0 +1,6 @@
+//FIRST PACKAGE currently in use
+// npm i vue3-draggable
+
+
+//SECOND PACKAGE NOT IN USE
+// npm install vue-draggable-next @vueuse/core

@@ -1,0 +1,24 @@
+/* @import './base.css'; */
+
+.has-text-centered {
+  text-align: center !important;
+}
+
+.bold-header {
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.02px;
+  font-size: 1.5rem;
+  line-height: normal;
+}
+.no-validation .v-input__details{
+  display: none !important;
+}
+
+.main-header{
+  text-align: center;
+  justify-content: center;
+}
+
+.has-text-danger{
+  color : red !important;
+}
