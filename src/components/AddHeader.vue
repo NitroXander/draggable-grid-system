@@ -11,7 +11,7 @@
                                 @click="closeModal">
                             </v-btn>
                         </v-card-item>
-                        <p class="has-text-centered bold-header">
+                        <p class="text-center bold-header">
                             <span> Add {{ headingType }}Heading </span>
                         </p>
                         <v-row class="justify-center align-center mx-10 mt-5">

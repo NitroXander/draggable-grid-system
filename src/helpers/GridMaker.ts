@@ -9,7 +9,7 @@ export class GridMaker{
     label : string
     required : boolean
     value : null | string | boolean | number
-    itemList : Array<string>
+    itemList : Array<any>
     moved : boolean
     constructor(){
         this.x = 0

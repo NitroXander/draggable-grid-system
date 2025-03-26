@@ -1,10 +1,10 @@
 <template>
   <div>
     <div :class="styles">
-      <v-select v-if="!hide" :items="itemList" :focused="isAgent" :disabled="disabled" rounded :color="(!isAgent)?appGlobalStore.primaryColor : 'red'" 
-        :readonly="(readonly || isAgent)? true : false" :base-color="(isAgent)?'red' : ''" density="compact"
+      <v-select v-if="!hide" :items="items" :focused="isAgent" :disabled="disabled" :color="(!isAgent)?globalStore.primaryColor : 'red'" 
+        :readonly="(readonly || isAgent)? true : false" :base-color="(isAgent)?'red' : ''" :item-value="itemValue" :item-title="itemTitle"
         :placeholder="placeholder" :rules="validationRules" :maxlenghth=maxLength @input="updateValue "
-        v-model="localValue" variant="outlined">
+        v-model="localValue" variant="outlined" rounded density="compact">
         <template v-slot:label>
           <div>
             {{ label }} <span v-if="required" class="has-text-danger">*</span>
@@ -12,7 +12,7 @@
         </template>
         <template v-slot:append-inner v-if="copyable">
           <span>
-            <v-btn :color="(!isAgent)?appGlobalStore.primaryColor : 'red'"  icon="mdi-content-copy" variant="text" @click="copyToClipboard(localValue)"></v-btn>
+            <v-btn :color="(!isAgent)?globalStore.primaryColor : 'red'"  icon="mdi-content-copy" variant="text" @click="copyToClipboard(localValue)"></v-btn>
           </span>
         </template>
       </v-select>
@@ -21,16 +21,16 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useAppGlobalStore } from '../stores/appGlobalStore';
+import { useAppGlobalStore } from '@/stores/appGlobalStore';
 
 export default defineComponent({
   name: "Select",
   setup() {
-    const appGlobalStore = useAppGlobalStore();
-    return { appGlobalStore };
+    const globalStore = useAppGlobalStore();
+    return { globalStore };
   },
   props: [
-    "itemList",
+    "items",
     "isAgent",
     "label",
     "value",
@@ -46,6 +46,8 @@ export default defineComponent({
     "placeholder",
     "copyable",
     "hide",
+    "itemValue",
+    "itemTitle",
   ],
   emits : ['input', 'getError'],
   components: {},
@@ -66,12 +68,17 @@ export default defineComponent({
         this.localValue = this.value;
       }
     },
+    "localValue": function () {
+      console.log("localValue updated : ", this.localValue)
+        this.$emit(`input`, this.localValue);
+    }
   },
   methods: {
     sendError(error: any) {
       this.$emit(`getError`, error);
     },
     updateValue() {
+      console.log("value updated : ", this.localValue)
       this.$emit(`input`, this.localValue);
     },
     copyToClipboard(text : any) {
@@ -83,7 +90,7 @@ export default defineComponent({
       document.execCommand("copy");
       document.body.removeChild(dummy);
 
-      this.appGlobalStore.setNotification("Copied to clipboard", "is-success", 5000, "")
+      this.globalStore.setNotification("Copied to clipboard", "is-success", 5000, "")
     },
   },
   mounted() {

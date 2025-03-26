@@ -1,9 +1,9 @@
 <template>
   <div>
     <div :class="styles">
-      <v-autocomplete v-if="!hide" :items="itemList" :focused="isAgent" :disabled="disabled" rounded :color="(!isAgent)?appGlobalStore.primaryColor : 'red'" 
+      <v-autocomplete v-if="!hide" :items="items" :focused="isAgent" :disabled="disabled" rounded :color="(!isAgent)?appGlobalStore.primaryColor : 'red'" 
         :readonly="(readonly || isAgent)? true : false" :base-color="(isAgent)?'red' : ''" density="compact"
-        :placeholder="placeholder" :rules="validationRules" :maxlenghth=maxLength @input="updateValue "
+        :placeholder="placeholder" :rules="rules" :maxlenghth=maxLength @input="updateValue" :item-value="itemValue" :item-title="itemTitle"
         v-model="localValue" variant="outlined">
         <template v-slot:label>
           <div>
@@ -30,7 +30,7 @@ export default defineComponent({
     return { appGlobalStore };
   },
   props: [
-    "itemList",
+    "items",
     "isAgent",
     "label",
     "value",
@@ -38,13 +38,15 @@ export default defineComponent({
     "inputFunc",
     "type",
     "maxLength",
-    "validationRules",
+    "rules",
     "fieldName",
     "disabled",
     "readonly",
     "required",
     "placeholder",
     "copyable",
+    "itemValue",
+    "itemTitle",
     "hide",
   ],
   emits : ['input', 'getError'],

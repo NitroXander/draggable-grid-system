@@ -3,7 +3,7 @@
     <div :class="styles">
       <v-text-field v-if="!hide" :focused="isAgent" :disabled="disabled" rounded :color="(!isAgent)?appGlobalStore.primaryColor : 'red'" 
         :readonly="(readonly || isAgent)? true : false" :base-color="(isAgent)?'red' : ''" density="compact"
-        :placeholder="placeholder" :rules="validationRules" :maxlenghth=maxLength @input="updateValue "
+        :placeholder="placeholder" :rules="rules" :maxlenghth=maxLength @input="updateValue "
         v-model="localValue" variant="outlined">
         <template v-slot:label>
           <div>
@@ -41,7 +41,7 @@ export default defineComponent({
     "inputFunc",
     "type",
     "maxLength",
-    "validationRules",
+    "rules",
     "fieldName",
     "disabled",
     "readonly",

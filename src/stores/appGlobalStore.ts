@@ -4,6 +4,8 @@ import { defineStore } from 'pinia'
 export const useAppGlobalStore = defineStore("appGlobalStore", {
   state: () => ({
     primaryColor : 'blue',
+    secondaryColor : 'blue',
+    headerColor : 'black',
     notification :{
       type: "",
       title:"",
