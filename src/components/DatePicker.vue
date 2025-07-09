@@ -14,7 +14,6 @@
                 <span class="icon is-small is-right">
                   <span>
                     <v-icon :color="appGlobalStore.primaryColor">mdi-calendar</v-icon>
-                    <!-- <img :src="calendarImage" alt="Calendar" width="25" height="25" /> -->
                   </span>
                 </span>
               </template>
@@ -76,7 +75,7 @@ export default defineComponent({
   },
   watch: {
     'selectedFirstDate': function () {
-      if(this.selectedFirstDate !== null && new Date(this.selectedFirstDate) !== this.firstdate) {
+      if(this.selectedFirstDate !== null && new Date(this.selectedFirstDate).getTime !== this.firstdate) {
         // let formatFirstDate = DateTimeManger.formatInputDates(new Date(this.selectedFirstDate))
         // if(this.selectedFirstDate  != this.parseDate(formatFirstDate))
         this.firstdate = new Date(this.selectedFirstDate);
@@ -87,7 +86,7 @@ export default defineComponent({
       }
     },
     'firstdate': function () {
-      if(this.firstdate !== null && new Date(this.selectedFirstDate) !== this.firstdate) {
+      if(this.firstdate !== null && new Date(this.selectedFirstDate).getTime() !== this.firstdate.getTime()) {
         console.log("this.firstdate",this.firstdate)
         console.log("DateTimeManger.formatInputDates(new Date(this.firstdate))",DateTimeManger.formatInputDates(new Date(this.firstdate).toString()))
         // this.emitSelectedDate()
@@ -137,7 +136,7 @@ export default defineComponent({
       }
     },
     setMaxDate() {
-      if (this.adultsOnly == true) {
+      if (this.adultsOnly) {
         const today = new Date();
         console.log("Adults only")
         this.maxDate = new Date(today.setFullYear(today.getFullYear() - 18))
@@ -145,7 +144,7 @@ export default defineComponent({
         console.log(new Date().getFullYear() - 18)
         this.maxYear = new Date().getFullYear() - 18
       }
-      if (this.futureDisabled == true) {
+      if (this.futureDisabled) {
         this.maxDate = new Date().toISOString().substr(0, 10)
       }
     }

@@ -17,7 +17,6 @@
         </template>
         <template v-slot:prepend-inner v-if="isSearch">
           <v-icon>mdi-magnify</v-icon>
-          <!-- <v-btn :color="(!isAgent)?appGlobalStore.primaryColor : 'red'"  icon="mdi-content-copy" variant="text" @click="copyToClipboard(localValue)"></v-btn> -->
         </template>
       </v-textarea>
     </div>
@@ -97,7 +96,6 @@ export default defineComponent({
         return this.value;
       },
       set(val: any) {
-        // this.$emit("input", val);
       },
     },
   },
@@ -113,7 +111,7 @@ export default defineComponent({
 
 .custom-float-label-initial {
   top: 0.93em !important;
-  font-family: "Nunito-SemiBold";
+  font-family: "Nunito-SemiBold", sans-serif;
   letter-spacing: 0.4px;
   font-size: 1rem !important;
   transition: ease 0.3s;
@@ -122,7 +120,7 @@ export default defineComponent({
 
 .custom-float-label {
   top: 0.22em !important;
-  font-family: "Nunito-SemiBold";
+  font-family: "Nunito-SemiBold", sans-serif;
   letter-spacing: 0.4px;
   font-size: 0.9rem !important;
   transition: ease 0.3s;

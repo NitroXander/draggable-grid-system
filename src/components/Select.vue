@@ -105,7 +105,7 @@ export default defineComponent({
 
 .custom-float-label-initial {
   top: 0.93em !important;
-  font-family: "Nunito-SemiBold";
+  font-family: "Nunito-SemiBold", sans-serif;
   letter-spacing: 0.4px;
   font-size: 1rem !important;
   transition: ease 0.3s;
@@ -114,7 +114,7 @@ export default defineComponent({
 
 .custom-float-label {
   top: 0.22em !important;
-  font-family: "Nunito-SemiBold";
+  font-family: "Nunito-SemiBold", sans-serif;
   letter-spacing: 0.4px;
   font-size: 0.9rem !important;
   transition: ease 0.3s;

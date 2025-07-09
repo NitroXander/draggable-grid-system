@@ -6,7 +6,6 @@
       <v-row class="justify-center mx-10 mt-5">
         <v-col>
           <ColorPicker label="Primary Color" :value="appGlobalStore.primaryColor" @input="appGlobalStore.primaryColor = $event"/>
-          <!-- <v-btn variant="outlined" @click="openColorModal">Primary Color</v-btn> -->
         </v-col>
         <v-col>
           <ColorPicker label="Secondary Color" :value="appGlobalStore.secondaryColor" @input="appGlobalStore.secondaryColor = $event"/>
@@ -14,7 +13,6 @@
         <v-col>
           <ColorPicker label="Header Color" :value="appGlobalStore.headerColor" @input="appGlobalStore.headerColor = $event"/>
         </v-col>
-        <!-- <v-color-picker v-model="appGlobalStore.primaryColor" elevation="0"></v-color-picker> -->
       </v-row>
       <div style="width:100%;margin-top: 10px;height:100%;">
         <grid-layout :layout="layout" :col-num="12" :row-height="30" :is-draggable="draggable" :auto-size="true"
@@ -121,8 +119,6 @@ import AddHeader from '@/components/AddHeader.vue';
 import ColorPicker from '@/components/ColorPicker.vue';
 import { HeaderCreator, GridMaker } from '@/helpers/GridMaker';
 import { useAppGlobalStore } from '../stores/appGlobalStore'
-import { get } from '@vueuse/core';
-
 
 export default defineComponent({
   setup() {
@@ -132,7 +128,6 @@ export default defineComponent({
     }
   },
   components: {
-    // Draggable,
     GridLayout,
     GridItem,
     AddField,
@@ -169,6 +164,7 @@ export default defineComponent({
       const comp = this;
       console.log("value : ", value)
       let header = new GridMaker()
+      console.log("header", header)
       header = value
       header.i = comp.layout.length.toString()
       if (header.type == 'TextArea') {
@@ -245,12 +241,7 @@ export default defineComponent({
   cursor: pointer;
 }
 
-/* .vue-grid-layout {
-    background: #eee;
-} */
-
 .vue-grid-item:not(.vue-grid-placeholder) {
-  /* background: #ccc; */
   border: 1px dashed black;
   border-radius: 5px;
 }
@@ -258,10 +249,6 @@ export default defineComponent({
 .vue-grid-item .resizing {
   opacity: 0.9;
 }
-
-/* .vue-grid-item .static {
-    background: #cce;
-} */
 
 .vue-grid-item .text {
   font-size: 24px;
@@ -295,7 +282,6 @@ export default defineComponent({
   height: 20px;
   top: 0;
   left: 0;
-  /* background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10'><circle cx='5' cy='5' r='5' fill='#999999'/></svg>") no-repeat; */
   background-position: bottom right;
   padding: 0 8px 8px 0;
   background-repeat: no-repeat;
@@ -305,7 +291,6 @@ export default defineComponent({
 }
 
 .layoutJSON {
-  /* background: #ddd; */
   border: 1px solid black;
   margin-top: 10px;
   padding: 10px;

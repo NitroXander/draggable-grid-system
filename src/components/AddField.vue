@@ -53,7 +53,6 @@
                                 <v-col cols="6">
                                     <v-file-input clearable label="File input" accept="application/JSON"
                                         v-model="selectedFile" @update:model-value="processSelectedFile"></v-file-input>
-                                    <!-- <InputLabel label="Add Item" :value="addItem" @input="addItem = $event" :required="false" /> -->
                                 </v-col>
                             </v-row>
                             <v-row class="justify-center align-center mx-10 my-5">
@@ -159,5 +158,3 @@ export default defineComponent({
     },
 })
 </script>
-
-<style scoped></style>
